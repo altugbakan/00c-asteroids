@@ -9,7 +9,7 @@ members = [
 version = "0.6.0"
 
 [profile.release]
-opt-level = "z"
+opt-level = 3
 overflow-checks = true
 debug = 0
 strip = "symbols"
