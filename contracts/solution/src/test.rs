@@ -17,10 +17,13 @@ use std::println;
 
 use soroban_sdk::Env;
 
-use crate::{
-    engine::{Client as GameEngine, WASM as GameEngineWASM},
-    Solution, SolutionClient,
-};
+mod engine {
+    soroban_sdk::contractimport!(file = "../game_engine.wasm");
+}
+
+use engine::{Client as GameEngine, WASM as GameEngineWASM};
+
+use crate::{Solution, SolutionClient};
 
 extern crate std;
 
@@ -107,7 +110,7 @@ pub fn fca00c_budget() {
     // We are printing your contract's utilized budget, but there will be an
     // *expected* difference between the budget numbers you see locally and on
     // the FCA00C site. Please see above note for details.
-    env.budget().print();
+    //env.budget().print();
 
     let points = engine.p_points();
 

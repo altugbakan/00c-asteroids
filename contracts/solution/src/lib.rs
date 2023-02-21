@@ -1,40 +1,69 @@
 #![no_std]
 
-use engine::{Client as GameEngine, Direction, Point};
-use soroban_sdk::{contractimpl, BytesN, Env};
+use soroban_sdk::{contractimpl, contracttype, symbol, vec, BytesN, Env, IntoVal, Map, RawVal};
 
 pub struct Solution;
 
-mod engine {
-    soroban_sdk::contractimport!(file = "../game_engine.wasm");
+#[contracttype]
+enum Direction {
+    Up,
+    UpRight,
+    Right,
+    DownRight,
+    Down,
+    DownLeft,
+    Left,
+    UpLeft,
 }
-
-mod test;
 
 #[contractimpl]
 impl Solution {
     pub fn solve(env: Env, engine_id: BytesN<32>) {
-        let engine = GameEngine::new(&env, &engine_id);
-        let mut ship = Point(8, 8);
+        let mut ship = (8, 8);
 
         // 570 iterations
         // while engine.p_points() < 100 {
         while ship.0 != -562 {
-            for point in engine.get_map().keys().into_iter_unchecked() {
+            for (point, _) in env
+                .invoke_contract::<Map<(i32, i32), RawVal>>(
+                    &engine_id,
+                    &symbol!("get_map"),
+                    vec![&env],
+                )
+                .into_iter_unchecked()
+            {
                 // if something is above the spaceship, move there and
                 // shoot and harvest without checking out what it is
                 if ship.0 == point.0 && ship.1 <= point.1 {
-                    engine.p_turn(&Direction::Up);
+                    env.invoke_contract::<RawVal>(
+                        &engine_id,
+                        &symbol!("p_turn"),
+                        vec![&env, Direction::Up.into_val(&env)],
+                    );
                     let diff = point.1.abs_diff(ship.1);
-                    engine.p_move(&Some(diff));
-                    ship = Point(ship.0, ship.1 + diff as i32);
-                    engine.p_shoot();
-                    engine.p_harvest();
-                    engine.p_turn(&Direction::DownLeft);
+                    env.invoke_contract::<RawVal>(
+                        &engine_id,
+                        &symbol!("p_move"),
+                        vec![&env, RawVal::from_u32(diff)],
+                    );
+                    env.invoke_contract::<RawVal>(&engine_id, &symbol!("p_shoot"), vec![&env]);
+                    env.invoke_contract::<RawVal>(&engine_id, &symbol!("p_harvest"), vec![&env]);
+                    env.invoke_contract::<RawVal>(
+                        &engine_id,
+                        &symbol!("p_turn"),
+                        vec![&env, Direction::DownLeft.into_val(&env)],
+                    );
+                    ship.1 += diff as i32;
                 }
             }
-            engine.p_move(&Some(1));
-            ship = Point(ship.0 - 1, ship.1 - 1);
+            env.invoke_contract::<RawVal>(
+                &engine_id,
+                &symbol!("p_move"),
+                vec![&env, RawVal::from_u32(1)],
+            );
+            ship = (ship.0 - 1, ship.1 - 1);
         }
     }
 }
+
+mod test;
