@@ -11,8 +11,8 @@ bo:
 	cargo +nightly build --target wasm32-unknown-unknown --release -Z build-std=std,panic_abort -Z build-std-features=panic_immediate_abort
 	cd target/wasm32-unknown-unknown/release/ && \
 		for i in *.wasm ; do \
-			wasm-snip --snip-rust-panicking-code "$$i" > "$$i.tmp" && mv "$$i.tmp" "$$i"; \
-			wasm-opt -Oz -c -mvp --code-folding --const-hoisting --strip-producers "$$i" -o "$$i.tmp" && mv "$$i.tmp" "$$i"; \
+			wasm-snip --snip-rust-panicking-code --skip-producers-section "$$i" > "$$i.tmp" && mv "$$i.tmp" "$$i"; \
+			wasm-opt -Oz -c -mvp --const-hoisting --code-folding -n "$$i" -o "$$i.tmp" && mv "$$i.tmp" "$$i"; \
 			ls -l "$$i"; \
 		done
 
@@ -41,3 +41,13 @@ rb:
 w:
 	cp target/wasm32-unknown-unknown/release/soroban_asteroids_solution.wasm test.wasm
 	wasm2wat target/wasm32-unknown-unknown/release/soroban_asteroids_solution.wasm > test.wat
+
+n:
+	wat2wasm solution.wat -o solution.wasm
+	tail -c 32 golden.wasm >> solution.wasm
+	ls -l solution.wasm
+
+tl:
+	wat2wasm solution.wat -o solution.wasm
+	tail -c 105 target/wasm32-unknown-unknown/release/soroban_asteroids_solution.wasm >> solution.wasm
+	make tb

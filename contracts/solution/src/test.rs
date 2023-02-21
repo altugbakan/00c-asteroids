@@ -93,9 +93,7 @@ pub fn fca00c_budget() {
     // you want to _actively_ build against, but it is useful for fine-tuning a
     // valid contract.
     mod solution {
-        soroban_sdk::contractimport!(
-            file = "../../target/wasm32-unknown-unknown/release/soroban_asteroids_solution.wasm"
-        );
+        soroban_sdk::contractimport!(file = "../../solution.wasm");
     }
 
     let solution_id = env.register_contract_wasm(None, solution::WASM);

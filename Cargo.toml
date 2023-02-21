@@ -10,9 +10,8 @@ version = "0.6.0"
 
 [profile.release]
 opt-level = 3
-overflow-checks = true
+overflow-checks = false
 debug = 0
-strip = "symbols"
 debug-assertions = false
 panic = "abort"
 codegen-units = 1
