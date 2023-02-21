@@ -135,8 +135,8 @@
         i32.ne (;-562 != l.2 - 1;)
         br_if 0 (;@2;) (;;)
       end
-      i64.const 5 (;5;)
-      return (;;)
     end
-    unreachable)
+    i64.const 5 (;5;)
+    return (;;)
+  )
   (export "solve" (func 4)))
