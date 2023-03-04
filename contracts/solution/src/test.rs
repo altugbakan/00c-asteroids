@@ -108,11 +108,11 @@ pub fn fca00c_budget() {
     // We are printing your contract's utilized budget, but there will be an
     // *expected* difference between the budget numbers you see locally and on
     // the FCA00C site. Please see above note for details.
-    //env.budget().print();
+    env.budget().print();
 
     let points = engine.p_points();
 
-    println!("Points: {}", points);
+    println!("Points : {}", points);
     assert!(points >= 100);
 }
 

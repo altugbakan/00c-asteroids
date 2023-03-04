@@ -13,7 +13,7 @@ enum Direction {
 #[contractimpl]
 impl Solution {
     pub fn solve(env: Env, engine_id: BytesN<32>) {
-        let mut ship = (8, 8);
+        let mut ship: (i32, i32) = (8, 8);
 
         let turn = |dir: &Direction| {
             env.invoke_contract::<RawVal>(
@@ -40,14 +40,9 @@ impl Solution {
         };
 
         let map = || -> Map<(i32, i32), RawVal> {
-            env.invoke_contract::<Map<(i32, i32), RawVal>>(
-                &engine_id,
-                &symbol!("get_map"),
-                vec![&env],
-            )
+            env.invoke_contract(&engine_id, &symbol!("get_map"), vec![&env])
         };
 
-        // while engine.p_points() < 100 {
         while ship.0 != -562 {
             for p in 0..16 {
                 // if something is above the spaceship, move there and

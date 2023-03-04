@@ -1,142 +1,114 @@
+;; Fast, Cheap & Out of Control - Asteroids Solution
+;; 22/02/2023 by Sjox
 (module
   (type (;0;) (func (param i64) (result i64)))
   (type (;1;) (func (param i64 i64) (result i64)))
   (type (;2;) (func (param i64 i64 i64) (result i64)))
-  (import "v" "_" (func (;0;) (type 0)))
-  (import "d" "_" (func (;1;) (type 2)))
-  (import "v" "6" (func (;2;) (type 1)))
-  (import "m" "4" (func (;3;) (type 1)))
-  (func (;4;) (type 0) (param i64) (result i64)
-    (local i32 i32 i32 i32 i64 i64 i64 i64)
-    block  ;; label = @1
-      i32.const 8 (;8;) 
-      local.tee 2 (;;) 
-      local.set 1 (;;) 
-      loop  ;; label = @2
-        local.get 0 (;l.0;) 
-        i64.const 49115374459737 (;49115374459737, l.0;) 
-        i64.const 5 (;5, 49115374459737, l.0;) 
-        call 0 (;r.0, 49115374459737, l.0;) 
-        call 1 (;r.1;) 
-        local.tee 7 (;r.1;)
-        i32.wrap_i64 (;r.1;)
-        i32.const 23 (;23, r.1;)
-        i32.ne (;23 != r.1;)
-        br_if 1 (;@1;) (;;)
-        local.get 2 (;l.2;)
-        i64.extend_i32_u (;l.2.e;)
-        i64.const 4 (;4, l.2.e;)
-        i64.shl (;l.2.e << 4;)
-        i64.const 3 (;3, l.2.e << 4;)
-        i64.or (;l.2.e << 4 + 3;)
-        local.set 8 (;;)
-        i64.const 1 (;1;)
-        local.set 5 (;;)
-        i32.const 0 (;0;)
-        local.set 3 (;;)
-        loop  ;; label = @3 (;;)
-          local.get 7 (;l.7;)
-          i64.const 33 (;33, l.7;)
-          call 0 (;r.0, l.7;)
-          local.get 8 (;l.8, r.0, l.7;)
-          call 2 (;r.2, l.7;)
-          local.get 1 (;l.1, r.2, l.7;)
-          local.get 3 (;l.3, l.1, r.2, l.7;)
-          i32.add (;l.1 + l.3, r.2, l.7;)
-          local.tee 4 (;l.1 + l.3, r.2, l.7;)
-          i64.extend_i32_u (;(l.1 + l.3).e, r.2, l.7;)
-          i64.const 4 (;4, (l.1 + l.3).e, r.2, l.7;)
-          i64.shl (;(l.1 + l.3).e << 4, r.2, l.7;)
-          i64.const 3  (;3, (l.1 + l.3).e << 4, r.2, l.7;)
-          i64.or (;(l.1 + l.3).e << 4 + 3, r.2, l.7;)
-          call 2 (;r.2, l.7;)
-          call 3 (;r.3;)
-          i64.const 21 (;21, r.3;)
-          i64.eq (;21 == r.3;)
-          if  ;; label = @4 (;;)
-            i64.const 17 (;17;)
-            call 0 (;r.0;)
-            i64.const 33625 (;33625, r.0;)
-            call 2 (;r.2;)
-            local.set 6 (;;)
-            local.get 0 (;l.0;)
-            i64.const 911044435769 (;911044435769, l.0;)
-            i64.const 5 (;5, 911044435769, l.0;)
-            call 0 (;r.0, 911044435769, l.0;)
-            local.get 6 (;l.6, r.0, 911044435769, l.0;)
-            call 2 (;r.2, 911044435769, l.0;)
-            call 1 (;r.1;)
-            drop (;;)
-            local.get 0 (;l.0;)
-            i64.const 911014686377 (;911014686377, l.0;)
-            i64.const 5 (;5, 911014686377, l.0;)
-            call 0 (;r.0, 911014686377, l.0;)
-            local.get 5 (;l.5, r.0, 911014686377, l.0;)
-            call 2 (;r.2, 911014686377, l.0;)
-            call 1 (;r.1;)
-            drop (;;)
-            local.get 0 (;l.0;)
-            i64.const 58306520732569 (;58306520732569, l.0;)
-            i64.const 5 (;5, 58306520732569, l.0;)
-            call 0 (;r.0, 58306520732569, l.0;)
-            call 1 (;r.1;)
-            drop (;;)
-            local.get 0 (;l.0;)
-            i64.const 238811294867317657 (;238811294867317657, l.0;)
-            i64.const 5 (;5, 238811294867317657, l.0;)
-            call 0 (;r.0, 238811294867317657, l.0;)
-            call 1 (;r.1;)
-            drop (;;)
-            local.get 4 (;l.4;)
-            local.set 1 (;;)
-          end (;;)
-          local.get 3 (;l.3;)
-          i32.const 1 (;1, l.3;)
-          i32.add (;l.3 + 1;)
-          local.set 3 (;;)
-          local.get 5 (;l.5;)
-          i64.const 16 (;16, l.5;)
-          i64.add (;l.5 + 16;)
-          local.tee 5 (;l.5 + 16;)
-          i64.const 257 (;257, l.5 + 16;)
-          i64.ne (;257 != l.5 + 16;)
-          br_if 0 (;@3;) (;;)
-        end
-        i64.const 17 (;17;)
-        call 0 (;r.0;)
-        i64.const 1113750348935065 (;1113750348935065, r.0;)
-        call 2 (;r.2;)
-        local.set 6 (;;)
-        local.get 0 (;l.0;)
-        i64.const 911044435769 (;911044435769, l.0;)
-        i64.const 5 (;5, 911044435769, l.0;)
-        call 0 (;r.0, 911044435769, l.0;)
-        local.get 6 (;l.6, r.0, 911044435769, l.0;)
-        call 2 (;r.2, 911044435769, l.0;)
-        call 1 (;r.1;)
-        drop (;;)
-        local.get 0 (;l.0;)
-        i64.const 911014686377 (;911014686377, l.0;)
-        i64.const 5 (;5, 911014686377, l.0;)
-        call 0 (;r.0, 911014686377, l.0;)
-        i64.const 17 (;17, r.0, 911014686377, l.0;)
-        call 2 (;r.2, 911014686377, l.0;)
-        call 1 (;r.1;)
-        drop (;;)
-        local.get 1 (;l.1;)
-        i32.const 1 (;1, l.1;)
-        i32.sub (;l.1 - 1;)
-        local.set 1 (;;)
-        local.get 2 (;l.2;)
-        i32.const 1 (;1, l.2;)
-        i32.sub (;l.2 - 1;)
-        local.tee 2 (;l.2 - 1;)
-        i32.const -562 (;-562, l.2 - 1;)
-        i32.ne (;-562 != l.2 - 1;)
-        br_if 0 (;@2;) (;;)
-      end (;;)
-    end (;;)
-    i64.const 5 (;5;)
-    return (;;)
-  )
-  (export "solve" (func 4)))
+  (import "v" "_" (func (;0;) (type 0))) ;; vec_new: takes: 1 puts: 1
+  (import "d" "_" (func (;1;) (type 2))) ;; call: takes: 3 puts: 1
+  (import "v" "6" (func (;2;) (type 1))) ;; vec_push: takes: 2 puts: 1
+  (import "m" "4" (func (;3;) (type 1))) ;; map_has: takes: 2 puts: 1
+  (func (;4;) (type 0) (param i64 (;engine_id;)) (result i64)
+    (local i64 (;empty vec;)
+      i64 (;((ship.1 << 4) | 3);) i64 (;((ship.0 << 4) | 3);)
+      i64 (;(((0..16) << 4) | 3);)
+      i64 (;(((ship.0 + (0..16)) << 4) | 3);))
+    i64.const 131 ;; ((8 << 4) | 3) i64
+    local.tee 3 ;; ((8 << 4) | 3) i64
+    local.set 2 ;;
+    i64.const 5 ;; RawVal::VOID i64
+    call 0 ;; new_vec i64
+    local.set 1 ;;
+    loop ;;
+      i64.const 3 ;; ((0 << 4) | 3) i64
+      local.set 4 ;;
+      loop ;;
+        local.get 0 ;; engine_id i64
+        i64.const 49115374459737 ;; symbol!("get_map") i64, engine_id i64
+        local.get 1 ;; empty_vec i64, symbol!("get_map") i64, engine_id i64
+        call 1 ;; get_map i64
+        local.get 1 ;; empty_vec i64, get_map i64
+        local.get 3 ;; ((ship.0 << 4) | 3) i64, empty_vec i64, get_map i64
+        call 2 ;; vec_push i64, get_map i64
+        local.get 2 ;; ((ship.1 << 4) | 3) i64, vec_push i64, get_map i64
+        local.get 4 ;; (((0..16) << 4) | 3) i64, ((ship.1 << 4) | 3) i64, vec_push i64, get_map i64
+        i64.add ;; (((ship.0 + (0..16)) << 4) | 6) i64, vec_push i64, get_map i64
+        i64.const 3 ;; 3 i64, (((ship.0 + (0..16)) << 4) | 6) i64, vec_push i64, get_map i64
+        i64.sub ;; (((ship.0 + (0..16)) << 4) | 3) i64, vec_push i64, get_map i64
+        local.tee 5 ;; (((ship.0 + (0..16)) << 4) | 3) i64, vec_push i64, get_map i64
+        call 2 ;; vec_push i64, get_map i64
+        call 3 ;; map_has i64
+        i64.const 21 ;; RawVal::TRUE i64, map_has i64
+        i64.eq ;; (RawVal::TRUE == map_has) i32
+        if ;;
+          local.get 0 ;; engine_id i64
+          i64.const 911044435769 ;; symbol!("turn") i64, engine_id i64
+          local.get 1 ;; empty_vec i64, symbol!("turn") i64, engine_id i64
+          local.get 1 ;; empty_vec i64, empty_vec i64, symbol!("turn") i64, engine_id i64
+          i64.const 33625 ;; Direction::Up i64, empty_vec i64, empty_vec i64, symbol!("turn") i64, engine_id i64
+          call 2 ;; vec_push i64, empty_vec i64, symbol!("turn") i64, engine_id i64
+          call 2 ;; vec_push i64, symbol!("turn") i64, engine_id i64
+          call 1 ;; turn i64
+          drop ;;
+          local.get 0 ;; engine_id i64
+          i64.const 911014686377 ;; symbol!("move") i64, engine_id i64
+          local.get 1 ;; empty_vec i64, symbol!("move") i64, engine_id i64
+          local.get 4 ;; (((0..16) << 4) | 3) i64, empty_vec i64, symbol!("move") i64, engine_id i64
+          i64.const 2 ;; 2 i64, (((0..16) << 4) | 3) i64, empty_vec i64, symbol!("move") i64, engine_id i64
+          i64.sub ;; (((0..16) << 4) | 1) i64, empty_vec i64, symbol!("move") i64, engine_id i64
+          call 2 ;; vec_push i64, symbol!("move") i64, engine_id i64
+          call 1 ;; move i64
+          drop ;;
+          local.get 0 ;; engine_id i64
+          i64.const 58306520732569 ;; symbol!("shoot") i64, engine_id i64
+          local.get 1 ;; empty_vec i64, symbol!("shoot") i64, engine_id i64
+          call 1 ;; shoot i64
+          drop ;;
+          local.get 0 ;; engine_id i64
+          i64.const 238811294867317657 ;; symbol!("harvest") i64, engine_id i64
+          local.get 1 ;; empty_vec i64, symbol!("harvest") i64, engine_id i64
+          call 1 ;; harvest i64
+          drop ;;
+          local.get 5 ;; (((ship.0 + (0..16)) << 4) | 3) i64
+          local.set 2 ;; 
+        end ;;
+        local.get 4 ;; (((0..16) << 4) | 3) i64
+        i64.const 16 ;; (1 << 4) i64; (((0..16) << 4) | 3) i64
+        i64.add ;; ((((0..16) + 1) << 4) | 3) i64;
+        local.tee 4 ;; ((((0..16) + 1) << 4) | 3) i64;
+        i64.const 275 ;; (((16 + 1) << 4) | 3) i64, ((((0..16) + 1) << 4) | 3) i64;
+        i64.ne ;; 16 != (0..16) i32;
+        br_if 0 ;;
+      end ;;
+      local.get 0 ;; engine_id i64
+      i64.const 911044435769 ;; symbol!("turn") i64, engine_id i64
+      local.get 1 ;; empty_vec i64, symbol!("turn") i64, engine_id i64
+      local.get 1 ;; empty_vec i64, empty_vec i64, symbol!("turn") i64, engine_id i64
+      i64.const 1113750348935065 ;; Direction::DownLeft i64, empty_vec i64, empty_vec i64, symbol!("turn") i64, engine_id i64
+      call 2 ;; vec_push i64, empty_vec i64, symbol!("turn") i64, engine_id i64
+      call 2 ;; vec_push i64, symbol!("turn") i64, engine_id i64
+      call 1 ;; turn i64
+      drop ;;
+      local.get 0 ;; engine_id i64
+      i64.const 911014686377 ;; symbol!("move") i64, engine_id i64
+      local.get 1 ;; empty_vec i64, symbol!("move") i64, engine_id i64
+      i64.const 17 ;; RawVal::from_u32(1) i64, empty_vec i64, symbol!("move") i64, engine_id i64
+      call 2 ;; vec_push i64, symbol!("move") i64, engine_id i64
+      call 1 ;; move i64
+      drop ;;
+      local.get 2 ;; ((ship.1 << 4) | 3) i64
+      i64.const 16 ;; (1 << 4) i64, ((ship.1 << 4) | 3) i64
+      i64.sub ;; (((ship.1 - 1) << 4) | 3) i64
+      local.set 2 ;;
+      local.get 3 ;; ((ship.0 << 4) | 3) i64
+      i64.const 16 ;; (1 << 4) i64, ((ship.0 << 4) | 3) i64
+      i64.sub ;; (((ship.0 - 1) << 4) | 3) i64
+      local.tee 3 ;; (((ship.0 - 1) << 4) | 3) i64
+      i64.const -9005 ;; (((-562 - 1) << 4) | 3) i64, (((ship.0 - 1) << 4) | 3) i64
+      i64.ne ;; (ship.0 != -562) i32
+      br_if 0 ;;
+    end ;;
+    i64.const 5 ;; RawVal::VOID i64
+    ) ;; implicit return
+  (export "solve" (func 4))
+) ;; gg
